@@ -19,7 +19,7 @@ app.get('/about', function(req,res){
 
 app.get('/messenger', function(req,res){
 	res.type('text/plain');
-	res.send('2048365211');
+	res.send(req.challenge);
 });
 
 // custom 404 page
