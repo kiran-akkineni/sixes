@@ -18,6 +18,11 @@ app.get('/about', function(req,res){
 	res.send('About Meadowlark Travel');
 });
 
+app.get('/privacy', function(req,res){
+	res.type('text/plain');
+	res.send(privacyPolicy.txt);
+});
+
 app.get('/webhook/', function (req, res) {
   if (req.query['hub.verify_token'] === fb_token) {
       res.send(req.query['hub.challenge']);
