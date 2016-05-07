@@ -23,7 +23,7 @@ app.get('/webhook/', function (req, res) {
       res.send(req.query['hub.challenge']);
   }
   res.send('Error, wrong validation token');
-})
+});
 
 // custom 404 page
 app.use(function(req,res){
