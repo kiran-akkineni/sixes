@@ -17,6 +17,11 @@ app.get('/about', function(req,res){
 	res.send('About Meadowlark Travel');
 });
 
+app.get('/messenger', function(req,res){
+	res.type('text/plain');
+	res.send('2048365211');
+});
+
 // custom 404 page
 app.use(function(req,res){
 	res.type('text/plain');
