@@ -1,7 +1,8 @@
 "use strict";
 
 const 
-	express = require('express');
+	express = require('express'),
+	fb_token = 'EAAK4EFWz8kwBACZBevnf4U67bstSaCBI2AtmB2xoRPpiH0eiqqYXndDLVWyJnmwnMXfYi8xuxEsmSZAq7We15RRhHBwQDPfShdZATv6fh9ZCo7wKosc9JfCxaoAz4HoUzmgIszeBFzgz3fMfNGqpHZAo9SLBBFLNZCr7VQBuzq2AZDZD';
 var
 	app = express();
 
@@ -17,10 +18,12 @@ app.get('/about', function(req,res){
 	res.send('About Meadowlark Travel');
 });
 
-app.get('/messenger', function(req,res){
-	res.type('text/plain');
-	res.send(req.challenge);
-});
+app.get('/webhook/', function (req, res) {
+  if (req.query['hub.verify_token'] === fb_token) {
+      res.send(req.query['hub.challenge']);
+  }
+  res.send('Error, wrong validation token');
+})
 
 // custom 404 page
 app.use(function(req,res){
